@@ -39,15 +39,15 @@ jobs:
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:sha-${{ github.sha }}
 
     - name: Setup SSH key
-        uses: webfactory/ssh-agent@v0.8.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      uses: webfactory/ssh-agent@v0.8.0
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
     - name: Deploy na Debian server pres Ansible
-        env:
-          ANSIBLE_HOST_KEY_CHECKING: "False"
-        run: |
-          echo "[vps_servers]" > inventory.ini
-          echo "${{ secrets.SERVER_IP }} ansible_user=jenda" >> inventory.ini
-          
-          ansible-playbook -i inventory.ini ansible/playbooks/deploy.yml
+      env:
+        ANSIBLE_HOST_KEY_CHECKING: "False"
+      run: |
+        echo "[vps_servers]" > inventory.ini
+        echo "${{ secrets.SERVER_IP }} ansible_user=jenda" >> inventory.ini
+        
+        ansible-playbook -i inventory.ini ansible/playbooks/deploy.yml
