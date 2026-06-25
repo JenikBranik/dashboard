@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   backend:
-    image: ghcr.io/JenikBranik/dashboard-backend:latest
+    image: ghcr.io/jenikbranik/dashboard-backend:latest
     container_name: dashboard-backend
     restart: unless-stopped
     ports:
@@ -11,7 +11,7 @@ services:
       - TZ=Europe/Prague
     
   frontend:
-    image: ghcr.io/JenikBranik/dashboard-frontend:latest
+    image: ghcr.io/jenikbranik/dashboard-frontend:latest
     container_name: dashboard-frontend
     restart: unless-stopped
     ports:
