@@ -1,0 +1,27 @@
+---
+- name: Deploy Dashboard
+  hosts: vps_servers
+  become: true
+
+  tasks:
+    - name: Check root folder
+      ansible.builtin.file:
+        path: /docker-apps/dashboard
+        state: directory
+        owner: jenda
+        group: jenda
+        mode: '0755'
+
+    - name: Copy docker-compose
+      ansible.builtin.copy:
+        src: ../../docker-compose.yml
+        dest: /docker-apps/dashboard/docker-compose.yml
+        owner: jenda
+        group: jenda
+        mode: '0644'
+
+    - name: Update docker
+      community.docker.docker_compose_v2:
+        project_src: /docker-apps/dashboard
+        state: present
+        pull: always
