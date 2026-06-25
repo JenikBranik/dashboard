@@ -1,0 +1,58 @@
+name: CI backend
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  backend-ci:
+    name: Backend CI
+    runs-on: [ubuntu-latest]
+    defaults:
+      run:
+        working-directory: src/backend
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      
+      - name: Detect backend changes
+        id: changes
+        run: |
+          git fetch origin main
+          if git diff --name-only origin/main...HEAD | grep -q '^src/backend/'; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Skip backend CI
+        if: steps.changes.outputs.changed == 'false'
+        run: echo "No changes, skip tests"
+
+      - name: Set up Python
+        if: steps.changes.outputs.changed == 'true'
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+        
+      - name: Install dependencies
+        if: steps.changes.outputs.changed == 'true'
+          run: |
+            python -m pip install --upgrade pip
+            pip install flake8 pytest
+            if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Run Flake8 (Linter)
+        if: steps.changes.outputs.changed == 'true'
+          run: |
+            flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+            flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+      - name: Run Pytest
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          pytest
