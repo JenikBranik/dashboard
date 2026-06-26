@@ -20,14 +20,14 @@
         group: jenda
         mode: '0644'
 
+    - name: Login to GitHub Container Registry
+      community.docker.docker_login:
+        registry_url: ghcr.io
+        username: "{{ github_username }}"
+        password: "{{ github_token }}"
+
     - name: Update and restart Docker containers
       community.docker.docker_compose_v2:
         project_src: /docker-apps/dashboard/
         pull: always
         state: present
-
-    - name: Login to GitHub Container Registry
-        community.docker.docker_login:
-          registry_url: ghcr.io
-          username: "{{ github_username }}"
-          password: "{{ github_token }}"
