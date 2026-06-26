@@ -31,3 +31,10 @@
         registry_url: ghcr.io
         username: "{{ github_username }}"
         password: "{{ github_token }}"
+
+    - name: Update docker
+      shell: |
+        docker compose down --remove-orphans
+        docker compose up -d
+      args:
+        chdir: /docker-apps/dashboard/
