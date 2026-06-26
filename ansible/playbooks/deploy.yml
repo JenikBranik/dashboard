@@ -25,3 +25,9 @@
         project_src: /docker-apps/dashboard
         state: present
         pull: always
+
+    - name: Login to GitHub Container Registry
+      community.docker.docker_login:
+        registry_url: ghcr.io
+        username: "{{ github_username }}"
+        password: "{{ github_token }}"
