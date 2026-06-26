@@ -1,2 +1,0 @@
-testovaci
-tete
