@@ -45,7 +45,7 @@ jobs:
         add-identity: true
 
     - name: Deploy on Debian
-        env:
-          ANSIBLE_HOST_KEY_CHECKING: "False"
-        run: |
-          ansible-playbook -i inventory.ini ansible/playbooks/deploy.yml -e "github_username=${{ github.actor }} github_token=${{ secrets.GHCR_TOKEN }}"
+      env:
+        ANSIBLE_HOST_KEY_CHECKING: "False"
+      run: |
+        ansible-playbook -i inventory.ini ansible/playbooks/deploy.yml -e "github_username=${{ github.actor }} github_token=${{ secrets.GHCR_TOKEN }}"
