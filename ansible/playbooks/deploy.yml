@@ -21,10 +21,12 @@
         mode: '0644'
 
     - name: Update docker
-      community.docker.docker_compose_v2:
-        project_src: /docker-apps/dashboard
-        state: present
-        pull: always
+      shell: |
+        docker compose pull
+        docker compose down --remove-orphans
+        docker compose up -d
+      args:
+        chdir: /docker-apps/dashboard/
 
     - name: Login to GitHub Container Registry
       community.docker.docker_login:
