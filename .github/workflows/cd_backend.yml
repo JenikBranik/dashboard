@@ -44,11 +44,8 @@ jobs:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
         add-identity: true
 
-    - name: Deploy na Debian server pres Ansible
-      env:
-        ANSIBLE_HOST_KEY_CHECKING: "False"
-      run: |
-        echo "[vps_servers]" > inventory.ini
-        echo "${{ secrets.SERVER_IP }} ansible_user=jenda" >> inventory.ini
-        
-        ansible-playbook -i inventory.ini ansible/playbooks/deploy.yml
+    - name: Deploy on Debian
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: "False"
+        run: |
+          ansible-playbook -i inventory.ini ansible/playbooks/deploy.yml -e "github_username=${{ github.actor }} github_token=${{ secrets.GHCR_TOKEN }}"
