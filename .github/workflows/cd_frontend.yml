@@ -48,4 +48,4 @@ jobs:
         env:
           ANSIBLE_HOST_KEY_CHECKING: "False"
         run: |
-          ansible-playbook -i inventory.ini ansible/playbooks/deploy.yml -e "github_username=${{ github.actor }} github_token=${{ secrets.GHCR_TOKEN }}"
+          ansible-playbook -i inventory.ini ansible/playbooks/deploy.yml -e "github_username=${{ github.actor }} github_token=${{ secrets.GHCR_TOKEN }} postgres_user=${{ secrets.POSTGRES_USER }} postgres_password=${{ secrets.POSTGRES_PASSWORD }} postgres_db=${{ secrets.POSTGRES_DB }}"
