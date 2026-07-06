@@ -40,7 +40,7 @@ function LoginPage() {
         setMousePos({ x, y });
     }
 
-    // Helper for subtle parallax transforms
+    // Helper for subtle parallax transforms help
     const parallax = (factor) => ({
         transform: `translate(${mousePos.x * factor}px, ${mousePos.y * factor}px)`,
     })
