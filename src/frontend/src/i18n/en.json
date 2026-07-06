@@ -1,0 +1,31 @@
+{
+    "login": {
+        "title": "Login",
+        "email": "Email",
+        "password": "Password",
+        "rememberMe": "Remember me",
+        "forgotPassword": "Forgot Password?",
+        "submitButton": "LOGIN",
+        "signingIn": "Signing in...",
+        "noAccount": "Don't have an account?",
+        "signUp": "Sign up",
+        "errorEmpty": "Please fill in all fields",
+        "copyright": "© 2026 Dashboard. All rights reserved.",
+        "brandingTitle": "Manage your workflow",
+        "brandingSubtitle": "The complete Dashboard tool for tracking your daily metrics and progress."
+    },
+    "register": {
+        "title": "Create Account",
+        "subtitle": "Get started with your free account today.",
+        "name": "Full Name",
+        "email": "Email Address",
+        "password": "Password",
+        "submitButton": "Create Account",
+        "signingUp": "Creating account...",
+        "hasAccount": "Already have an account?",
+        "signIn": "Sign in here",
+        "errorEmpty": "Please fill in all fields",
+        "brandingTitle": "Join the community",
+        "brandingSubtitle": "Track everything in one place with a single intelligent dashboard."
+    }
+}

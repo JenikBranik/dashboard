@@ -1,0 +1,31 @@
+{
+    "login": {
+        "title": "Přihlášení",
+        "email": "E-mail",
+        "password": "Heslo",
+        "rememberMe": "Zapamatuj si mě",
+        "forgotPassword": "Zapomenuté heslo?",
+        "submitButton": "PŘIHLÁSIT",
+        "signingIn": "Přihlašování...",
+        "noAccount": "Nemáte účet?",
+        "signUp": "Zaregistrujte se",
+        "errorEmpty": "Vyplňte prosím všechna pole",
+        "copyright": "© 2026 Dashboard. Všechna práva vyhrazena.",
+        "brandingTitle": "Řiďte svůj workflow",
+        "brandingSubtitle": "Komplexní Dashboard pro snadné sledování vašich denních metrik a pokroku."
+    },
+    "register": {
+        "title": "Vytvořit Účet",
+        "subtitle": "Začněte s účtem zdarma ještě dnes.",
+        "name": "Celé Jméno",
+        "email": "E-mailová adresa",
+        "password": "Heslo",
+        "submitButton": "Vytvořit účet",
+        "signingUp": "Vytváření účtu...",
+        "hasAccount": "Už máte účet?",
+        "signIn": "Přihlašte se zde",
+        "errorEmpty": "Vyplňte prosím všechna pole",
+        "brandingTitle": "Připojte se ke komunitě",
+        "brandingSubtitle": "Sledujte vše na jednom místě pomocí jediného inteligentního panelu."
+    }
+}
