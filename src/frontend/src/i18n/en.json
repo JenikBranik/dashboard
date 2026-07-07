@@ -1,6 +1,7 @@
 {
     "login": {
         "title": "Login",
+        "subtitle": "Welcome back! Please enter your details.",
         "email": "Email",
         "password": "Password",
         "rememberMe": "Remember me",
@@ -27,5 +28,12 @@
         "errorEmpty": "Please fill in all fields",
         "brandingTitle": "Join the community",
         "brandingSubtitle": "Track everything in one place with a single intelligent dashboard."
+    },
+    "dashboard": {
+        "hello": "Hello,",
+        "welcomeBack": "Welcome back,",
+        "emailRole": "Your email is {{email}} and role is {{role}}",
+        "signOut": "Sign Out",
+        "loading": "Loading dashboard data..."
     }
 }
