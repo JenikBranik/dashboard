@@ -1,6 +1,7 @@
 {
     "login": {
         "title": "Přihlášení",
+        "subtitle": "Vítejte zpět! Zadejte prosím své údaje.",
         "email": "E-mail",
         "password": "Heslo",
         "rememberMe": "Zapamatuj si mě",
@@ -27,5 +28,12 @@
         "errorEmpty": "Vyplňte prosím všechna pole",
         "brandingTitle": "Připojte se ke komunitě",
         "brandingSubtitle": "Sledujte vše na jednom místě pomocí jediného inteligentního panelu."
+    },
+    "dashboard": {
+        "hello": "Ahoj,",
+        "welcomeBack": "Vítejte zpět,",
+        "emailRole": "Tvůj email je {{email}} a role je {{role}}",
+        "signOut": "Odhlásit se",
+        "loading": "Načítání dat dashboardu..."
     }
 }
