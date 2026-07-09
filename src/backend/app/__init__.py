@@ -27,9 +27,11 @@ def create_app() -> Flask:
     # ── Register server-layer blueprints ────────────────────────
     from app.server.controllers.auth_controller import auth_bp
     from app.server.controllers.dashboard_controller import dashboard_bp
+    from app.server.controllers.event_controller import event_bp
 
     app.register_blueprint(auth_bp)
     app.register_blueprint(dashboard_bp)
+    app.register_blueprint(event_bp)
 
     # ── Register centralised error handlers ─────────────────────
     from app.server.middleware.error_handlers import register_error_handlers
@@ -38,7 +40,7 @@ def create_app() -> Flask:
 
     # ── Create database tables (bootstrap) ──────────────────────
     with app.app_context():
-        from app.client.database.models import UserModel  # noqa: F401
+        from app.client.database.models import UserModel, EventModel  # noqa: F401
         db.create_all()
 
     # ── Health-check ────────────────────────────────────────────

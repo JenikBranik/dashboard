@@ -39,23 +39,23 @@ function LanguageSwitcher({ theme = 'login' }) {
 
     // Button classes
     const btnClasses = isLogin
-        ? "text-slate-700 bg-slate-900/5 border-slate-200 hover:bg-slate-900/10 lg:text-white/80 lg:bg-white/10 lg:border-white/20 lg:hover:text-white lg:hover:bg-white/15"
-        : "text-slate-700 bg-slate-900/5 border-slate-200 hover:bg-slate-900/10";
+        ? "text-slate-700 dark:text-slate-300 bg-slate-900/5 dark:bg-white/5 border-slate-200 dark:border-slate-700 hover:bg-slate-900/10 dark:hover:bg-white/10 lg:text-white/80 lg:bg-white/10 lg:border-white/20 lg:hover:text-white lg:hover:bg-white/15"
+        : "text-slate-700 dark:text-slate-300 bg-slate-900/5 dark:bg-white/5 border-slate-200 dark:border-slate-700 hover:bg-slate-900/10 dark:hover:bg-white/10";
 
     // Dropdown window classes
     const dropdownClasses = isLogin
-        ? "bg-white border-slate-100 lg:bg-blue-950/90 lg:border-white/20"
-        : "bg-white border-slate-100";
+        ? "bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700 lg:bg-blue-950/90 lg:border-white/20"
+        : "bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700";
 
     // Default item class
     const itemClasses = isLogin
-        ? "text-slate-600 hover:bg-slate-50 hover:text-slate-900 lg:text-white/60 lg:hover:bg-white/10 lg:hover:text-white"
-        : "text-slate-600 hover:bg-slate-50 hover:text-slate-900";
+        ? "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50 hover:text-slate-900 dark:hover:text-white lg:text-white/60 lg:hover:bg-white/10 lg:hover:text-white"
+        : "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50 hover:text-slate-900 dark:hover:text-white";
 
     // Active item class
     const activeItemClasses = isLogin
-        ? "bg-blue-50 text-blue-600 lg:bg-blue-500/20 lg:text-white"
-        : "bg-blue-50 text-blue-600";
+        ? "bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 lg:bg-blue-500/20 lg:text-white"
+        : "bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400";
 
     useEffect(() => {
         function handleClickOutside(e) {
@@ -68,7 +68,7 @@ function LanguageSwitcher({ theme = 'login' }) {
     }, [])
 
     return (
-        <div className="absolute top-6 right-6 z-50" ref={dropdownRef}>
+        <div className={theme === 'dashboard' ? 'relative' : 'absolute top-6 right-6 z-50'} ref={dropdownRef}>
             <button
                 id="language-switcher"
                 onClick={() => setIsOpen(!isOpen)}

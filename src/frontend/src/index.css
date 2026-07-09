@@ -19,4 +19,42 @@ body {
   margin: 0;
   padding: 0;
   font-family: var(--font-sans);
+  background-color: var(--color-slate-50);
+  transition: background-color 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--color-slate-900);
+  }
+
+  /* FullCalendar Dark Mode Rules */
+  :root {
+    --fc-page-bg-color: transparent;
+    --fc-neutral-bg-color: rgba(255, 255, 255, 0.05);
+    --fc-border-color: #334155;
+    /* slate-700 */
+    --fc-neutral-text-color: #f1f5f9;
+    --fc-button-text-color: #f1f5f9;
+    --fc-button-bg-color: #1e293b;
+    /* slate-800 */
+    --fc-button-border-color: #334155;
+    /* slate-700 */
+    --fc-button-hover-bg-color: #334155;
+    --fc-button-hover-border-color: #475569;
+    --fc-button-active-bg-color: #475569;
+    --fc-button-active-border-color: #475569;
+
+    --fc-list-event-hover-bg-color: #1e293b;
+    --fc-today-bg-color: rgba(59, 130, 246, 0.1);
+    /* blue-500 tint */
+  }
+
+  .fc {
+    color: #f1f5f9;
+  }
+
+  .fc a {
+    color: #f1f5f9;
+  }
 }

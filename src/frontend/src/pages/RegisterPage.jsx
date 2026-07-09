@@ -44,7 +44,7 @@ function RegisterPage() {
             setIsSuccess(true)
             // Wait for the slide UP animation to finish before updating route
             setTimeout(() => {
-                navigate('/dashboard', { replace: true })
+                navigate('/dashboard', { replace: true, state: { justLoggedIn: true } })
             }, 800)
         } catch (err) {
             setError(err.message || 'Registration failed')
@@ -63,7 +63,7 @@ function RegisterPage() {
     })
 
     return (
-        <div className="relative w-full h-screen overflow-hidden bg-slate-50">
+        <div className="relative w-full h-screen overflow-hidden bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
 
             {/* The Main Form Container */}
             <motion.div
@@ -72,7 +72,7 @@ function RegisterPage() {
                 // If sliding up, don't trigger normal exit animation
                 exit={isSuccess ? { opacity: 0 } : { opacity: 0, x: -50 }}
                 transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-                className="absolute inset-0 h-screen w-full flex bg-white z-10 flex-row-reverse shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
+                className="absolute inset-0 h-screen w-full flex bg-white dark:bg-slate-800 z-10 flex-row-reverse shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-colors duration-300"
                 onMouseMove={handleMouseMove}
             >
                 <LanguageSwitcher theme="register" />
@@ -82,10 +82,10 @@ function RegisterPage() {
                     <div className="w-full max-w-sm md:max-w-md mx-6 lg:mx-12 xl:mx-20 transition-transform duration-300">
 
                         {/* Title */}
-                        <h1 className="text-3xl font-bold text-slate-900 mb-2">
+                        <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2 transition-colors">
                             {t('register.title')}
                         </h1>
-                        <p className="text-slate-500 mb-10">
+                        <p className="text-slate-500 dark:text-slate-400 mb-10 transition-colors">
                             {t('register.subtitle')}
                         </p>
 
@@ -98,8 +98,8 @@ function RegisterPage() {
                         <form onSubmit={handleSubmit} className="space-y-6">
                             {/* Name field */}
                             <div className="group">
-                                <div className="flex items-center gap-3 border-b-2 border-slate-200 pb-2 transition-colors duration-300 group-focus-within:border-blue-600">
-                                    <svg className="w-5 h-5 text-slate-400 shrink-0 transition-colors duration-300 group-focus-within:text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <div className="flex items-center gap-3 border-b-2 border-slate-200 dark:border-slate-600 pb-2 transition-colors duration-300 group-focus-within:border-blue-600 dark:group-focus-within:border-blue-400">
+                                    <svg className="w-5 h-5 text-slate-400 dark:text-slate-500 shrink-0 transition-colors duration-300 group-focus-within:text-blue-600 dark:group-focus-within:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                                     </svg>
                                     <input
@@ -107,7 +107,7 @@ function RegisterPage() {
                                         placeholder={t('register.name')}
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
-                                        className="w-full bg-transparent text-slate-900 placeholder-slate-400 outline-none text-base tracking-wide"
+                                        className="w-full bg-transparent text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 outline-none text-base tracking-wide transition-colors"
                                         disabled={isSuccess}
                                     />
                                 </div>
@@ -115,8 +115,8 @@ function RegisterPage() {
 
                             {/* Email field */}
                             <div className="group">
-                                <div className="flex items-center gap-3 border-b-2 border-slate-200 pb-2 transition-colors duration-300 group-focus-within:border-blue-600">
-                                    <svg className="w-5 h-5 text-slate-400 shrink-0 transition-colors duration-300 group-focus-within:text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <div className="flex items-center gap-3 border-b-2 border-slate-200 dark:border-slate-600 pb-2 transition-colors duration-300 group-focus-within:border-blue-600 dark:group-focus-within:border-blue-400">
+                                    <svg className="w-5 h-5 text-slate-400 dark:text-slate-500 shrink-0 transition-colors duration-300 group-focus-within:text-blue-600 dark:group-focus-within:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                                     </svg>
                                     <input
@@ -124,7 +124,7 @@ function RegisterPage() {
                                         placeholder={t('register.email')}
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        className="w-full bg-transparent text-slate-900 placeholder-slate-400 outline-none text-base tracking-wide"
+                                        className="w-full bg-transparent text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 outline-none text-base tracking-wide transition-colors"
                                         disabled={isSuccess}
                                     />
                                 </div>
@@ -132,8 +132,8 @@ function RegisterPage() {
 
                             {/* Password field */}
                             <div className="group">
-                                <div className="flex items-center gap-3 border-b-2 border-slate-200 pb-2 transition-colors duration-300 group-focus-within:border-blue-600">
-                                    <svg className="w-5 h-5 text-slate-400 shrink-0 transition-colors duration-300 group-focus-within:text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <div className="flex items-center gap-3 border-b-2 border-slate-200 dark:border-slate-600 pb-2 transition-colors duration-300 group-focus-within:border-blue-600 dark:group-focus-within:border-blue-400">
+                                    <svg className="w-5 h-5 text-slate-400 dark:text-slate-500 shrink-0 transition-colors duration-300 group-focus-within:text-blue-600 dark:group-focus-within:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
                                     </svg>
                                     <input
@@ -141,7 +141,7 @@ function RegisterPage() {
                                         placeholder={t('register.password')}
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        className="w-full bg-transparent text-slate-900 placeholder-slate-400 outline-none text-base tracking-wide"
+                                        className="w-full bg-transparent text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 outline-none text-base tracking-wide transition-colors"
                                         disabled={isSuccess}
                                     />
                                 </div>
@@ -170,13 +170,13 @@ function RegisterPage() {
                         </form>
 
                         {/* Back to Login link */}
-                        <p className="text-center text-slate-600 text-sm mt-10">
+                        <p className="text-center text-slate-600 dark:text-slate-300 text-sm mt-10 transition-colors">
                             {t('register.hasAccount')}{' '}
-                            <Link to="/login" className="text-blue-600 hover:text-blue-800 transition-colors duration-200 font-semibold">
+                            <Link to="/login" className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-200 font-semibold">
                                 {t('register.signIn')}
                             </Link>
                         </p>
-                        <p className="text-center text-slate-400 text-xs mt-8">
+                        <p className="text-center text-slate-400 dark:text-slate-500 text-xs mt-8 transition-colors">
                             {t('login.copyright')}
                         </p>
                     </div>
