@@ -13,6 +13,9 @@ function AuthGuard({ children }) {
   return children;
 }
 
+import OverviewView from './components/views/OverviewView'
+import CalendarView from './components/views/CalendarView'
+
 // Wrapper component to handle routing animations
 function AnimatedRoutes() {
   const location = useLocation()
@@ -27,7 +30,10 @@ function AnimatedRoutes() {
         <Route path="/register" element={<RegisterPage />} />
 
         {/* Protected Routes */}
-        <Route path="/dashboard" element={<AuthGuard><DashboardPage /></AuthGuard>} />
+        <Route path="/dashboard" element={<AuthGuard><DashboardPage /></AuthGuard>}>
+          <Route index element={<OverviewView />} />
+          <Route path="calendar" element={<CalendarView />} />
+        </Route>
       </Routes>
     </AnimatePresence>
   )
