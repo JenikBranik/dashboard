@@ -79,3 +79,5 @@ def me():
     user_id = get_jwt_identity()
     user = _service.get_profile(user_id)
     return jsonify({"user": user.to_dict()}), 200
+
+# Test of automatisasion

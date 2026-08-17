@@ -15,7 +15,7 @@ jobs:
     runs-on: [ubuntu-latest]
     environment: dev
     permissions:
-      contents: read
+      contents: write
       packages: write
 
     steps:
@@ -37,3 +37,15 @@ jobs:
         tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:sha-${{ github.sha }}
+
+    - name: Setup SSH key
+      uses: webfactory/ssh-agent@v0.9.0
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        add-identity: true
+
+    - name: Deploy on Debian
+      env:
+        ANSIBLE_HOST_KEY_CHECKING: "False"
+      run: |
+        ansible-playbook -i inventory.ini ansible/playbooks/deploy.yml -e "github_username=${{ github.actor }} github_token=${{ secrets.GHCR_TOKEN }} postgres_user=${{ secrets.POSTGRES_USER }} postgres_password=${{ secrets.POSTGRES_PASSWORD }} postgres_db=${{ secrets.POSTGRES_DB }} jwt_secret_key=${{ secrets.JWT_SECRET_KEY }} secret_key=${{ secrets.SECRET_KEY }}"
